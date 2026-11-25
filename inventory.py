@@ -20,10 +20,11 @@ class Inventory:
         if item["quantity"] == 0:
             del self.items[name]
 
-    def total_value(self):
+    def total_value(self, discount=0.0):
         total = 0.0
         for item in self.items.values():
             total += item["quantity"] * item["price"]
+        total *= (1 - discount)
         return round(total, 2)
 
     def report(self):
