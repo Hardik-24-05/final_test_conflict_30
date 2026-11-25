@@ -1,6 +1,7 @@
 class Inventory:
     def __init__(self):
         self.items = {}
+        self.tax_factor = 1.18
 
     def add(self, name, quantity, price):
         if quantity <= 0:
@@ -23,7 +24,7 @@ class Inventory:
     def total_value(self):
         total = 0.0
         for item in self.items.values():
-            total += item["quantity"] * item["price"]
+            total += item["quantity"] * item["price"] * self.tax_factor
         return round(total, 2)
 
     def report(self):
